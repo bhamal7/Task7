@@ -1,27 +1,24 @@
-class Time():
+class Person():
+    age = 0
+    def __init__(self,initialAge):
+        if(initialAge < 0):
+            print("Age is not valid, setting to 0.")
+        else:
+            self.age = initialAge
+	
+	
+    def yearPasses(self):
+	    self.age += 1
 
-	def __init__(self, hours, minutes):
-		self.hours = hours
-		self.minutes = minutes
+    def amIOld(self):
+        if(self.age > 0 and self.age < 13):
+            print("You are young.")
+        elif(self.age >= 13 and self.age <= 19):
+            print("You are a teenager.")
+        else:
+            print("You are old.")    
+p1 = Person(38)
+p2 = Person(4)
 
-	def addTime(time1, time2):
-		time3 = Time(0,0)
-		time3.hours = time1.hours + time2.hours
-		time3.minutes = time1.minutes + time2.minutes
-		while time3.minutes >= 60:
-			time3.hours+=1
-			time3.minutes -=60
-		return time3
-
-	def displayTime(self):
-		print("Time is {} hours and {} minutes".format(self.hours,self.minutes))
-
-	def displayMinute(self):
-		totalMin = (self.hours*60+self.minutes)
-		print("Total minutes is: ",totalMin)
-
-a = Time(2,50)
-b = Time(1,20)
-c = Time.addTime(a,b)
-c.displayTime()
-c.displayMinute()
+p1.amIOld()
+p2.yearPasses()
